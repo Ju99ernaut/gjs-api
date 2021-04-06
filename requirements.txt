@@ -1,0 +1,5 @@
+ConfigArgParse
+requests
+dataset
+fastapi
+uvicorn[standard]

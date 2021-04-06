@@ -1,0 +1,19 @@
+{
+    "name": "super-fastapi",
+    "description": "REST API boilerplate using fastapi",
+    "keywords": ["fastapi"],
+    "repository": "https://github.com/Ju99ernaut/super-fastapi",
+    "addons": [
+        "heroku-postgresql:hobby-dev"
+    ],
+    "env": {
+        "POOL_SIZE": {
+            "description": "Connection pool size, keep the maximum number of connections in mind",
+            "value": "5"
+        },
+        "MAX_OVERFLOW": {
+            "description": "Connection pool maximum overflow, max_connections = pool_size + max_overflow",
+            "value": "2"
+        }
+    }
+}
