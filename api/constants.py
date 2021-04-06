@@ -1,11 +1,19 @@
 """
  Constants useful for data module
 """
-TABLE = "table"
+TEMPLATES_TABLE = "templates"
+ASSETS_TABLE = "assets"
 
-COLUMN1_KEY = "column1"
-COLUMN2_KEY = "column2"
+ASSETS_KEY = "assets"
+IDX_KEY = "idx"
+TEMPLATE_KEY = "template"
+THUMBNAIL_KEY = "thumbnail"
+HTML_KEY = "html"
+CSS_KEY = "css"
+COMPONENTS_KEY = "components"
+STYLES_KEY = "styles"
+URL_KEY = "url"
 
 API_TAGS_METADATA = [
-    {"name": "items", "description": "Some random items"},
+    {"name": "templates", "description": "Grapesjs templates"},
 ]
