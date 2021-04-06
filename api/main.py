@@ -2,29 +2,30 @@ import uvicorn
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import items
+from routes import templates
 
 import config
+import data
 
 from constants import *
 
 config.parse_args()
 app = FastAPI(
-    title="API",
-    description="API boilerplate",
+    title="Grapes API",
+    description="Simple API for grapesjs",
     version="1.0.0",
     openapi_tags=API_TAGS_METADATA,
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:8080/", "http://localhost:8080"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(items.router)
+app.include_router(templates.router)
 
 
 @app.get("/")
@@ -35,4 +36,5 @@ async def root():
 
 
 if __name__ == "__main__":
+    data.setup()
     uvicorn.run("main:app", host=config.CONFIG.host, port=int(config.CONFIG.port))

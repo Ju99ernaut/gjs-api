@@ -9,7 +9,7 @@ A REST API boilerplate project using `fastapi` and `dataset`, setup for easy dep
 Clone the repo
 
 ```sh
-$ git clone https://github.com/Ju99ernaut/super-fastapi.git
+$ git clone https://github.com/Ju99ernaut/gjs-api.git
 $ cd superfast-api
 ```
 
