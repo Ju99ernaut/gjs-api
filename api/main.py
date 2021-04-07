@@ -7,7 +7,7 @@ from routes import templates
 import config
 import data
 
-from constants import *
+from constants import API_TAGS_METADATA
 
 config.parse_args()
 app = FastAPI(

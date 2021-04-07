@@ -8,6 +8,7 @@ from typing import Any, Callable, Coroutine, Optional, Union
 
 from starlette.concurrency import run_in_threadpool
 
+from constants import GJS_PREFIX
 
 NoArgsNoReturnFuncT = Callable[[], None]
 NoArgsNoReturnAsyncFuncT = Callable[[], Coroutine[Any, Any, None]]
@@ -80,3 +81,27 @@ def repeat_every(
         return wrapped
 
     return decorator
+
+
+def prefix(dictionary):
+    """
+    Add prefix to assets, html, css, components, styles keys
+
+    Parameters
+    ----------
+    dictionary: Dict
+        Dictionary object to filter
+    """
+    
+    return {
+        **dictionary,
+        **{
+            f"{GJS_PREFIX}{k}": v
+            for k, v in dictionary.items()
+            if k == "assets"
+            or k == "html"
+            or k == "css"
+            or k == "components"
+            or k == "styles"
+        },
+    }

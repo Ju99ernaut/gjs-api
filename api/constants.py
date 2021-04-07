@@ -17,3 +17,5 @@ URL_KEY = "url"
 API_TAGS_METADATA = [
     {"name": "templates", "description": "Grapesjs templates"},
 ]
+
+GJS_PREFIX = "gjs-"

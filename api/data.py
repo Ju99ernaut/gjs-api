@@ -1,7 +1,7 @@
 import dataset
 
 import config
-from constants import *
+from constants import TEMPLATES_TABLE, IDX_KEY
 
 from utils.db import connect_db
 
