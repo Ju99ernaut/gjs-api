@@ -2,7 +2,7 @@ import data
 
 from typing import List
 
-# from uuid import UUID
+from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from models import Template
 
@@ -19,7 +19,7 @@ async def read_templates():
 
 
 @router.get("/{idx}", response_model=Template)
-async def read_template_with_idx(idx: str):
+async def read_template_with_idx(idx: UUID):
     template = data.get_template(idx)
     if not template:
         raise HTTPException(status_code=404, detail="Template not found")
@@ -27,7 +27,7 @@ async def read_template_with_idx(idx: str):
 
 
 @router.post("/{idx}", response_model=Template)
-async def add_template(idx: str, template: Template):
+async def add_template(idx: UUID, template: Template):
     data.add_template(template.dict())
     template = data.get_template(idx)
     if not template:
@@ -39,6 +39,6 @@ async def add_template(idx: str, template: Template):
     "/{idx}",
     response_model=List[Template],
 )
-async def delete_template_with_idx(idx: str):
+async def delete_template_with_idx(idx: UUID):
     data.remove_template(idx)
     return [templates for templates in data.get_all_templates()]

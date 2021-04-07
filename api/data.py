@@ -8,7 +8,7 @@ from utils.db import connect_db
 """Functions for managing a dataset SQL database
     # Schemas
 
-    #################### table ######################
+    #################### templates ######################
     id
     idx
     assets
@@ -30,19 +30,20 @@ def setup(db):
 @connect_db
 def add_template(db, template):
     table = db[TEMPLATES_TABLE]
+    template[IDX_KEY] = str(template[IDX_KEY])
     table.upsert(template, [IDX_KEY])
 
 
 @connect_db
 def remove_template(db, idx):
     table = db[TEMPLATES_TABLE]
-    table.delete(idx=idx)
+    table.delete(idx=str(idx))
 
 
 @connect_db
 def get_template(db, idx):
     table = db[TEMPLATES_TABLE]
-    row = table.find_one(idx=idx)
+    row = table.find_one(idx=str(idx))
     if row is not None:
         return row
     return None
