@@ -11,8 +11,8 @@ from constants import *
 
 config.parse_args()
 app = FastAPI(
-    title="Grapes API",
-    description="Simple API for grapesjs",
+    title="Grapesjs API",
+    description="Simple API for grapesjs and grapesjs-template-manager",
     version="1.0.0",
     openapi_tags=API_TAGS_METADATA,
 )
