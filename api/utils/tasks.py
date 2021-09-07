@@ -102,6 +102,7 @@ def prefix(dictionary):
             or k == "html"
             or k == "css"
             or k == "components"
+            or k == "pages"
             or k == "styles"
         },
     }

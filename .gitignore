@@ -1,7 +1,9 @@
 # Project specific ignores
 config.txt
 venv2/
-data.db
+*.db-shm
+*.db-wal
+*.db
 
 # Vim Autosave Ignores
 *.sw[a-z]

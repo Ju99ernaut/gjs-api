@@ -1,7 +1,7 @@
 import dataset
 
 import config
-from constants import TEMPLATES_TABLE, IDX_KEY
+from constants import TEMPLATES_TABLE, ID_KEY
 
 from utils.db import connect_db
 
@@ -10,40 +10,40 @@ from utils.db import connect_db
 
     #################### templates ######################
     id
-    idx
+    name
+    description
     assets
     template
     thumbnail
-    html
-    css
-    components
+    pages
     styles
+    updated_at
 
 """
 
 
 @connect_db
 def setup(db):
-    db.create_table(TEMPLATES_TABLE, primary_id=IDX_KEY, primary_type=db.types.text)
+    db.create_table(TEMPLATES_TABLE, primary_id=ID_KEY, primary_type=db.types.string)
 
 
 @connect_db
 def add_template(db, template):
     table = db[TEMPLATES_TABLE]
-    template[IDX_KEY] = str(template[IDX_KEY])
-    table.upsert(template, [IDX_KEY])
+    template[ID_KEY] = str(template[ID_KEY])
+    table.upsert(template, [ID_KEY])
 
 
 @connect_db
-def remove_template(db, idx):
+def remove_template(db, id):
     table = db[TEMPLATES_TABLE]
-    table.delete(idx=str(idx))
+    table.delete(id=str(id))
 
 
 @connect_db
-def get_template(db, idx):
+def get_template(db, id):
     table = db[TEMPLATES_TABLE]
-    row = table.find_one(idx=str(idx))
+    row = table.find_one(id=str(id))
     if row is not None:
         return row
     return None
